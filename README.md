@@ -5,41 +5,55 @@
 * I want to analyze the data has been collected on songs and user activity on new music streaming app. The analytics team is particularly interested in understanding what songs users are listening to. Currently, they don't have an easy way to query their data, which resides in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
 
 * I'd like to create a Postgres database with tables designed to optimize queries on song play analysis, and bring you on the project. Your role is to create a database schema and ETL pipeline for this analysis. You'll be able to test your database and ETL pipeline by running queries given to you by the analytics team from Sparkify and compare your results with their expected results.
+
 ## Dependencies
+
 1. Python 3.0
-2. psycopg2, pandas
-3. PosgreSQL 
+2. Psycopg2, Pandas
+3. PosgreSQL
+
 ## How to use
+
 Run these commands at the terminal
+
 1. python create_tables.py
 2. python etl.py
 
 ## Project files
 
 ### Directory: data/log_data
+
 This directory contains a collection of JSON log files. These files are used to populate our Fact table - Song Plays - and to populate the Dimension tables for Users and Time.
+
 ### Directory: data/song_data
+
 This directory contains a collection of Song JSON files. These files are used to populate Dimension tables for Songs and Artists.
+
 ### create_tables.py
-This Python script recreates the database and tables used to storethe data.
+
+This Python script recreates the database and tables used to store the data.
 
 ### etl.ipynb
+
 A Python Jupyter Notebook that was used to initially explore the data and test the ETL process.
 
 ### etl.py
+
 This Python script reads in the Log and Song data files, processes and inserts data into the database.
 
 ### sql_queries.py
+
 A Python script that defines all the SQL statements used by this project.
 
 ### test.ipynb
+
 A Python Jupyter Notebook that was used to test that data was loaded properly.
 
 ## Dataset
 
 ### 1. Song Dataset
 
-The first dataset is a subset of real data from the [Million Song Dataset][Dataset URL]. Each file is in JSON format and contains metadata about a song and the artist of that song. The files are partitioned by the first three letters of each song's track ID. For example, here are file paths to two files in this dataset.
+The first dataset is a subset of real data from the [Million Song Dataset](http://millionsongdataset.com/). Each file is in JSON format and contains metadata about a song and the artist of that song. The files are partitioned by the first three letters of each song's track ID. For example, here are file paths to two files in this dataset.
 
 > song_data/A/B/C/TRABCEI128F424C983.json
 > song_data/A/A/B/TRAABJL12903CDCF1A.json
@@ -69,6 +83,7 @@ Using the song and log datasets, I need to create a star schema optimized for qu
 After examining the Log and Song JSON files, I created a Star schema (shown below) that include one Fact table (songplays) and 4 Dimension tables.
 
 ![Schema](./Blank diagram.jpeg "Design")
+
 ### Fact Table
 
 1. songplays - records in log data associated with song plays i.e. records with page `NextSong`
@@ -99,5 +114,6 @@ After examining the Log and Song JSON files, I created a Star schema (shown belo
 In the `etl.ipynb` notebook,I developed ETL processes for each table. At the end of each table section, or at the end of the notebook, I run `test.ipynb` to confirm that records were successfully inserted into each table.
 
 ### Build ETL Pipeline
-Use what has done in etl.ipynb to complete etl.py, where it'll process the entire datasets. 
+
+Use what has done in etl.ipynb to complete etl.py, where it'll process the entire datasets.
 Remember to run create_tables.py before running etl.py to reset your tables. Run test.ipynb to confirm your records were successfully inserted into each table.
