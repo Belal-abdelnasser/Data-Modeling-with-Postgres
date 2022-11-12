@@ -82,7 +82,7 @@ This data contains information of which songs Users listened to at a specific ti
 Using the song and log datasets, I need to create a star schema optimized for queries on song play analysis.
 After examining the Log and Song JSON files, I created a Star schema (shown below) that include one Fact table (songplays) and 4 Dimension tables.
 
-![Star-Schema](./Star Schema.jpeg "Schema Design")
+![Star-Schema](./Star Schema.jpeg "Schema")
 
 ### Fact Table
 
